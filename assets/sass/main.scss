@@ -37,6 +37,74 @@ header {
       padding: 0 10px;
     }
   }
+
+  .menu-btn {
+    display: none;
+    font-size: 2rem;
+    color: white;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  padding: 10px;
+  width: 70vw;
+  height: 100vh;
+  background: black;
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.4s ease-in-out;
+
+  .close-menu-btn-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .close-menu-btn {
+      font-size: 2.5rem;
+      color: red;
+      text-decoration: none;
+      padding: 15px;
+    }
+  }
+
+  a {
+    font-size: 2.5rem;
+    color: red;
+    text-decoration: none;
+    padding: 15px;
+
+    &:hover {
+      background: white;
+    }
+  }
+}
+
+.mobile-menu.active {
+  // display: flex;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-opacity-layer {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+.mobile-opacity-layer.active {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 #top-section {
@@ -136,7 +204,7 @@ header {
   .videos {
     padding: 80px 50px 0;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
 
     .video {
@@ -160,14 +228,14 @@ header {
   .blurredbg {
     background-image: linear-gradient(
         45deg,
-        rgba(25, 32, 42, 1) 0%,
-        rgba(25, 32, 42, 1) 33%,
-        rgba(25, 32, 42, 0.96) 36%,
-        rgba(25, 32, 42, 0.86) 43%,
-        rgba(176, 38, 183, 0.57) 62%,
+        rgba(255, 253, 60, 1) 0%,
+        rgba(255, 253, 60, 1) 33%,
+        rgba(255, 253, 60, 0.96) 36%,
+        rgba(255, 253, 60, 0.86) 43%,
+        rgba(255, 253, 60, 0.2) 62%,
         rgba(125, 185, 232, 0) 100%
       ),
-      url("/img/top.jpg");
+      url("/img/album69.jpg");
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -179,7 +247,7 @@ header {
   .container {
     display: flex;
     padding: 0 50px;
-    position: absolute;
+    position: relative;
     z-index: 3;
   }
 
@@ -194,10 +262,11 @@ header {
       font-size: 3rem;
       font-weight: 700;
       text-align: center;
+      margin-bottom: 15px;
     }
 
     .sub-title {
-      font-size: 2rem;
+      font-size: 1.7rem;
       font-weight: 500;
       text-align: center;
       text-transform: uppercase;
@@ -233,6 +302,196 @@ header {
 
     img {
       width: 50%;
+    }
+  }
+}
+
+#tour {
+  background: black;
+  position: relative;
+  z-index: 4;
+
+  .top-img {
+    background-image: url("/img/group.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: saturate(0%) contrast(150%);
+    height: 300px;
+  }
+
+  .tour-dates {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0;
+
+    .title {
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 0 0 80px;
+    }
+
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      // max-width: 800px;
+
+      li {
+        color: white;
+        font-size: 1.3rem;
+
+        span {
+          padding: 0 10px;
+        }
+
+        .city {
+          font-weight: 700;
+        }
+
+        .location {
+          font-size: 1rem;
+          font-weight: 300;
+        }
+
+        .date {
+          font-weight: 500;
+          color: #f14848;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background: #1b1b1b;
+  position: relative;
+  z-index: 4;
+  padding: 25px;
+  text-align: center;
+  color: white;
+
+  img {
+    max-width: 45px;
+  }
+
+  a {
+    color: red;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (max-width: 1215px) {
+  #top-section {
+    .tekashi-img {
+      width: 70%;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #bio {
+    .container {
+      flex-direction: column;
+    }
+
+    p {
+      order: 2;
+      width: 100%;
+    }
+
+    .logo-centered {
+      order: 1;
+      width: 100%;
+      padding-bottom: 50px;
+    }
+  }
+
+  #media {
+    background-position: center center;
+  }
+
+  #tour {
+    .tour-dates {
+      .dates {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  header {
+    nav {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .mobile-opacity-layer {
+    display: block;
+  }
+
+  #top-section {
+    .tekashi-img {
+      width: 80%;
+    }
+  }
+
+  #media {
+    .title {
+      width: 60%;
+    }
+
+    .videos {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #music {
+    .container {
+      flex-direction: column;
+    }
+
+    .info {
+      width: 100%;
+
+      .singles {
+        width: 300px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .logos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .album-cover {
+      width: 100%;
+
+      img {
+        padding-top: 80px;
+        width: 100%;
+      }
+    }
+  }
+
+  #tour {
+    .tour-dates {
+      .dates {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
